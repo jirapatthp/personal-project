@@ -78,7 +78,7 @@ export default function Home() {
    const navigate = useNavigate()
 
   return (
-    <div className="relative min-h-screen bg-white flex flex-col overflow-hidden">
+    <div className="relative min-h-screen bg-white flex flex-col overflow-hidden ">
       {/* --- Navbar --- */}
       {/* <nav className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-6 text-gray-600 z-20">
         <h1 className="font-bold text-xl text-gray-800">🎂 Rolling Birthday</h1>
@@ -95,7 +95,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[9rem] leading-none font-extrabold text-gray-900 tracking-tight"
+          className="text-[8rem] leading-none font-extrabold text-gray-400 tracking-tight"
         >
           rolling
           <br />
@@ -108,15 +108,15 @@ export default function Home() {
           transition={{ delay: 0.4 }}
           className="max-w-md text-gray-600 mt-6 text-lg"
         >
-          Celebrate your day with a digital surprise.
-          <br /> Click below to start the fun 🎠
+          Tap to unwrap your surprise  <br />
+           ♡𐡘 𐡘 𐡘 𐡘♡ 
         </motion.p>
 
          <button
           onClick={() => navigate("/celebrate")}
-          className="mt-10 px-8 py-4 bg-pink-500 text-white rounded-full shadow-lg font-semibold hover:bg-pink-600 transition"
+          className="border-1 mt-10 px-8 py-4 bg-[url('https://i.pinimg.com/originals/0f/55/5c/0f555c0d865ea5d7f382e9dd245136c8.gif')]  rounded-full font-mono transition hover:cursor-pointer hover:scale-[1.1]"
         >
-          Let's Celebrate 🎉
+          click 
         </button>
       </main>
 
