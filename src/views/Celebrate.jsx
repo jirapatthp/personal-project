@@ -126,15 +126,15 @@ export default function Celebrate() {
           onClick={handleRoll}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-3 text-gray-800 bg-[url('https://i.pinimg.com/736x/73/38/04/733804cae53588e6add14f92ffef4a33.jpg')] bg-cover rounded-full shadow-md transition hover:cursor-pointer hover:bg-[url('https://i.pinimg.com/736x/13/67/99/1367995e76e1d882e4c797a047e53b2c.jpg')]"
+          className="px-8 py-3 text-gray-800 text-xl bg-[url('https://i.pinimg.com/736x/73/38/04/733804cae53588e6add14f92ffef4a33.jpg')] bg-cover rounded-full shadow-md transition hover:cursor-pointer hover:bg-[url('https://i.pinimg.com/736x/13/67/99/1367995e76e1d882e4c797a047e53b2c.jpg')]"
         >
-          Roll Again 🎠
+          Roll Again 
         </motion.button>
 
         <motion.button
           onClick={() => navigate("/")}
           whileHover={{ scale: 1.05 }}
-          className="mt-6 text-gray-500  hover:text-gray-700 transition hover:cursor-pointer"
+          className="mt-6 text-gray-600 text-xl hover:text-gray-700 transition hover:cursor-pointer"
         >
           ← Back
         </motion.button>

@@ -111,7 +111,8 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="max-w-md text-gray-600 mt-6 text-lg"
-        >
+        > 
+        
           Tap to unwrap your surprise  <br />
            ♡𐡘 𐡘 𐡘 𐡘♡ 
         </motion.p>
