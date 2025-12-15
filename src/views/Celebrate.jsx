@@ -18,7 +18,12 @@ const cakes = [
   "https://i.pinimg.com/736x/16/7e/f3/167ef30e9421fa0948d9bda6fe5719b2.jpg",
   "https://i.pinimg.com/1200x/cc/59/a1/cc59a1248d86a3e7a3f99ad0d6f782f1.jpg",
   "https://i.pinimg.com/736x/4d/b2/bb/4db2bb203ca838ebe31464db0d56f672.jpg",
-  "https://i.pinimg.com/736x/98/0b/91/980b91c18c82015703782c5a1a4414d8.jpg"
+  "https://i.pinimg.com/736x/98/0b/91/980b91c18c82015703782c5a1a4414d8.jpg",
+  "https://i.pinimg.com/736x/a9/40/4c/a9404c5c516fde3854c99d9159ea4b11.jpg",
+  "https://i.pinimg.com/1200x/4e/b0/75/4eb075737acbdb2bead95a5b2115cd9f.jpg",
+  "https://i.pinimg.com/736x/61/81/19/618119384d67f3f8af378b76116027ef.jpg",
+  "https://i.pinimg.com/736x/dd/c2/5e/ddc25eaba98f4531c75c0511d68730bc.jpg",
+
 ];
 
 const wishes = [
