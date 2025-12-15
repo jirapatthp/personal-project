@@ -71,21 +71,23 @@ import { motion } from "framer-motion"
 import cakePink from "../assets/cake-pink.jpg"
 import cakeBlue from "../assets/cake-blue.jpg"
 import cakeWhite from "../assets/cake-white.jpg"
+import { useNavigate } from "react-router-dom"
 
 export default function Home() {
   const cakes = [cakePink, cakeBlue, cakeWhite]
+   const navigate = useNavigate()
 
   return (
     <div className="relative min-h-screen bg-white flex flex-col overflow-hidden">
       {/* --- Navbar --- */}
-      <nav className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-6 text-gray-600 z-20">
+      {/* <nav className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-6 text-gray-600 z-20">
         <h1 className="font-bold text-xl text-gray-800">🎂 Rolling Birthday</h1>
         <ul className="flex gap-8">
           <li className="hover:text-pink-500 cursor-pointer">About</li>
           <li className="hover:text-pink-500 cursor-pointer">Play</li>
           <li className="hover:text-pink-500 cursor-pointer">Gift</li>
         </ul>
-      </nav>
+      </nav> */}
 
       {/* --- Hero Section --- */}
       <main className="flex flex-col items-center justify-center text-center flex-1 mt-20 z-10 relative">
@@ -110,13 +112,12 @@ export default function Home() {
           <br /> Click below to start the fun 🎠
         </motion.p>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-10 px-8 py-4 bg-yellow-100  rounded-full shadow-lg font-semibold hover:bg-pink-100 transition hover:cursor-pointer"
+         <button
+          onClick={() => navigate("/celebrate")}
+          className="mt-10 px-8 py-4 bg-pink-500 text-white rounded-full shadow-lg font-semibold hover:bg-pink-600 transition"
         >
           Let's Celebrate 🎉
-        </motion.button>
+        </button>
       </main>
 
       {/* --- Floating Cakes --- */}

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./views/Home.jsx";
 import Owner from "./views/Owner.jsx";
 import { Layout } from "./views/Layout.jsx";
+import Celebrate from "./views/Celebrate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/owner", element: <Owner /> },
+      { path: "/celebrate", element: <Celebrate /> },
     ],
   },
 ]);

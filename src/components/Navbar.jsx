@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 export function Navbar() {
   return (
     <nav>
-      <ul className="flex justify-end px-10 items-center w-full bg-teal-500 h-14 border-b-2 border-black gap-x-6 text-2xl text-white ">
+      <ul className="flex justify-end px-10 items-center w-full bg-pink-50 h-14 border-b-1 border-black gap-x-6 text-2xl text-black ">
         <li>
-          <Link to="/" className="hover:text-yellow-500">
+          <Link to="/" className="hover:text-red-800">
             Home
           </Link>
         </li>
         <li>
-          <Link to="/owner" className="hover:text-yellow-500">
+          <Link to="/owner" className="hover:text-red-800">
             Owner
           </Link>
         </li>
