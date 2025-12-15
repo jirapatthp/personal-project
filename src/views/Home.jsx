@@ -67,32 +67,22 @@
 //   );
 // }
 
-import { motion } from "framer-motion"
-import cakePink from "../assets/cake-pink.jpg"
-import cakeBlue from "../assets/cake-blue.jpg"
-import cakeWhite from "../assets/cake-white.jpg"
-import brownie from "../assets/brownie.jpg"
-import pinku from "../assets/pinku.jpg"
-import homie from "../assets/homie.jpg"
+import { motion } from "framer-motion";
+import cakePink from "../assets/cake-pink.jpg";
+import cakeBlue from "../assets/cake-blue.jpg";
+import cakeWhite from "../assets/cake-white.jpg";
+import brownie from "../assets/brownie.jpg";
+import pinku from "../assets/pinku.jpg";
+import homie from "../assets/homie.jpg";
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const cakes = [  cakeWhite, pinku,cakeBlue, cakePink, brownie, homie]
-   const navigate = useNavigate()
+  const cakes = [cakeWhite, pinku, cakeBlue, cakePink, brownie, homie];
+  const navigate = useNavigate();
 
   return (
     <div className="relative min-h-screen bg-white flex flex-col overflow-hidden ">
-      {/* --- Navbar --- */}
-      {/* <nav className="absolute top-0 left-0 w-full flex justify-between items-center px-10 py-6 text-gray-600 z-20">
-        <h1 className="font-bold text-xl text-gray-800">🎂 Rolling Birthday</h1>
-        <ul className="flex gap-8">
-          <li className="hover:text-pink-500 cursor-pointer">About</li>
-          <li className="hover:text-pink-500 cursor-pointer">Play</li>
-          <li className="hover:text-pink-500 cursor-pointer">Gift</li>
-        </ul>
-      </nav> */}
-
       {/* --- Hero Section --- */}
       <main className="flex flex-col items-center justify-center text-center flex-1 mt-20 z-10 relative">
         <motion.h1
@@ -111,17 +101,16 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="max-w-md text-gray-600 mt-6 text-lg bg-[url('https://i.pinimg.com/736x/50/38/29/503829e45fbbb222f98ffc3f6c072c01.jpg')]"
-        > 
-        
-          Tap to unwrap your surprise  <br />
-           ♡𐡘 𐡘 𐡘 𐡘♡ 
+        >
+          Tap to unwrap your surprise <br />
+          ♡𐡘 𐡘 𐡘 𐡘♡
         </motion.p>
 
-         <button
+        <button
           onClick={() => navigate("/celebrate")}
           className="border-1 mt-10 px-8 py-4 bg-[url('https://i.pinimg.com/originals/0f/55/5c/0f555c0d865ea5d7f382e9dd245136c8.gif')]  rounded-full  transition hover:cursor-pointer hover:scale-[1.1] font-bold"
         >
-          click 
+          click
         </button>
       </main>
 
@@ -157,5 +146,5 @@ export default function Home() {
         <p> — Rolling Birthday Project - </p>
       </footer>
     </div>
-  )
+  );
 }

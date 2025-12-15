@@ -5,16 +5,17 @@ import confetti from "canvas-confetti";
 import BirthdayCandle from "../components/BirthdayCandle";
 
 export default function Celebrate() {
-  // 🩷 ต้องอยู่ในฟังก์ชัน component
+  // 🩷 State หลัก
   const [name, setName] = useState("");
   const [hasName, setHasName] = useState(false);
-
   const [cake, setCake] = useState(null);
   const [wish, setWish] = useState("");
+  const [showCandle, setShowCandle] = useState(false); // 🕯 เพิ่ม state สำหรับเทียน
   const [isPlaying, setIsPlaying] = useState(false);
   const navigate = useNavigate();
   const ballpitRef = useRef(null);
 
+  // 🎂 ลิสต์รูปเค้ก
   const cakes = [
     "https://i.pinimg.com/736x/e0/e8/d7/e0e8d73620db92d8903416b52632435c.jpg",
     "https://i.pinimg.com/736x/ed/38/ef/ed38efff831277061d2ba9e0c7e65ecd.jpg",
@@ -28,6 +29,7 @@ export default function Celebrate() {
     "https://i.pinimg.com/736x/97/60/12/9760124ae9acff9948f688754f65482e.jpg",
   ];
 
+  // 💌 ลิสต์คำอวยพร
   const wishes = [
     "Hope this year wraps you in warmth, wonder, and whipped cream ☁️",
     "⋆⋆☆⋆⋆ Happy birthday cutie! 🎂",
@@ -41,13 +43,20 @@ export default function Celebrate() {
     "You're the sparkle in someone's sky ✨",
   ];
 
-  // 🧁 กด Roll แล้วสุ่มเค้ก + คำอวยพร
+  // 🎲 ฟังก์ชันสุ่มเค้ก + คำอวยพร
   const handleRoll = () => {
     const randomCake = cakes[Math.floor(Math.random() * cakes.length)];
     const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
     setCake(randomCake);
     setWish(randomWish);
+    setShowCandle(true); // 🕯 แสดงเทียนหลังจากสุ่มเค้ก
     confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+
+    // เสียงเล็กน้อยเวลาเทียนโผล่
+    new Audio(
+      "https://cdn.pixabay.com/download/audio/2023/04/04/audio_1692b4623f.mp3"
+    ).play();
+
     if (!isPlaying) toggleMusic();
   };
 
@@ -85,8 +94,8 @@ export default function Celebrate() {
           Rolling Birthday
         </h1>
 
+        {/* 💬 Step 1 — กรอกชื่อ */}
         {!hasName ? (
-          // 💬 Step 1
           <form onSubmit={handleStart} className="flex flex-col items-center gap-4">
             <p className="text-lg text-gray-600">Whose birthday is it today? 🎂</p>
             <input
@@ -94,25 +103,35 @@ export default function Celebrate() {
               placeholder=" name is ..."
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="px-4 py-2  rounded-full focus:outline-none text-center text-gray-700 shadow-sm"
+              className="px-4 py-2 rounded-full focus:outline-none text-center text-gray-700 shadow-sm"
             />
             <button
               type="submit"
               className="px-6 py-2 bg-[url('https://i.pinimg.com/736x/fd/05/2a/fd052aa0606de9ade0e4fcbe89a13195.jpg')] text-gray-700 text-xl font-bold hover:cursor-pointer rounded-full hover:bg-[url('https://i.pinimg.com/736x/56/42/01/564201b4e34df7a461ab68430608067d.jpg')] hover:scale-[1.1] transition"
             >
-              Let's celebrate 
+              Let's celebrate
             </button>
           </form>
         ) : (
-          // 💫 Step 2
+          // 💫 Step 2 — หน้าฉลอง
           <>
             <h2 className="text-3xl font-semibold text-gray-500 mb-6">
-              
-              Happy Birthday <span className="text-gray-500">{name} </span>
+             ˚ʚ♡ɞ˚ Happy Birthday <span className="text-gray-500">{name}</span> ˚ʚ♡ɞ˚
             </h2>
 
-            <BirthdayCandle/>
+            {/* 🕯 เทียนโผล่หลังสุ่มเค้ก */}
+            {showCandle && (
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 1, type: "spring" }}
+                className="mt-4"
+              >
+                <BirthdayCandle />
+              </motion.div>
+            )}
 
+            {/* 🎂 รูปเค้ก */}
             {cake ? (
               <motion.img
                 key={cake}
@@ -124,11 +143,14 @@ export default function Celebrate() {
                 transition={{ duration: 0.6, type: "spring" }}
               />
             ) : (
-              <p className="text-gray-600 mb-4 text-lg">
+              <p className="text-gray-600 mb-2 mt-8">
                 Click to roll your birthday cake 🥁
               </p>
             )}
 
+            
+
+            {/* 💌 คำอวยพร */}
             {wish && (
               <motion.p
                 key={wish}
@@ -141,15 +163,17 @@ export default function Celebrate() {
               </motion.p>
             )}
 
+            {/* 🎲 ปุ่ม Roll */}
             <motion.button
               onClick={handleRoll}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 text-gray-800 text-xl bg-[url('https://i.pinimg.com/736x/73/38/04/733804cae53588e6add14f92ffef4a33.jpg')] bg-cover rounded-full shadow-md transition hover:cursor-pointer hover:bg-[url('https://i.pinimg.com/736x/13/67/99/1367995e76e1d882e4c797a047e53b2c.jpg')]"
             >
-              Roll Again
+              Roll 
             </motion.button>
 
+            {/* ⬅️ Back */}
             <motion.button
               onClick={() => navigate("/")}
               whileHover={{ scale: 1.05 }}
@@ -158,6 +182,7 @@ export default function Celebrate() {
               ← Back
             </motion.button>
 
+            {/* 🔈 ปุ่มเปิด/ปิดเสียง */}
             <motion.button
               onClick={toggleMusic}
               whileHover={{ scale: 1.2 }}

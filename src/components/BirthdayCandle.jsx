@@ -78,7 +78,12 @@ export default function BirthdayCandle() {
         )}
         {!isLit && (
           <motion.div
-            className="absolute -top-6 left-1/2 w-3 h-6 bg-gray-300 rounded-full -translate-x-1/2"
+            className="absolute -top-5 left-1/2 w-5 h-5 rounded-full -translate-x-1/2"
+            style={{
+              background:
+                "radial-gradient(circle at 30% 30%, #c2c1bd, #8f8c8c 70%)",
+              filter: "blur(1px)",
+            }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 0.5, y: -10 }}
             transition={{ duration: 1 }}
@@ -92,20 +97,21 @@ export default function BirthdayCandle() {
             onClick={() => setListening(true)}
             className="px-3 py-1 bg-pink-200 rounded-full hover:bg-pink-300 transition text-sm"
           >
-            Blow the candle 🎤
+            Blow  🎤
           </button>
         ) : (
-          <p className="text-gray-500 text-sm">Listening... blow gently! 🌬️</p>
+          <p className="text-gray-500 text-sm">Listening... blow gently! 🌬️ <br />
+          make a wish </p>
         )}
 
-        {!isLit && (
+        {/* {!isLit && (
           <button
             onClick={relight}
             className="px-3 py-1 bg-yellow-100 rounded-full hover:bg-yellow-200 transition text-sm"
           >
             Relight 🔥
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
