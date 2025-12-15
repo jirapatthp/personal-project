@@ -1,9 +1,10 @@
-import { Navbar } from "./components/Navbar";
+// 
 
-export default function App() {
-  return (
-    <div className="min-h-screen flex justify-center">
-      <Navbar />
-    </div>
-  );
+import Home from "./views/Home"
+
+
+function App() {
+  return <Home/>
 }
+
+export default App

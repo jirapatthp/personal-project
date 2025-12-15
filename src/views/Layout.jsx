@@ -5,9 +5,10 @@ export function Layout() {
   return (
     <div>
       <Navbar />
-      <section className="bg-amber-200 flex justify-center">
+      <section >
         <Outlet />
       </section>
     </div>
   );
 }
+//       <section className="bg-amber-200 flex justify-center">
