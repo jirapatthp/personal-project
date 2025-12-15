@@ -1,21 +1,19 @@
-import React, { useState } from "react"
-import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
-import confetti from "canvas-confetti"
-
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";
 
 const cakes = [
   "https://i.pinimg.com/736x/e0/e8/d7/e0e8d73620db92d8903416b52632435c.jpg",
   "https://i.pinimg.com/736x/ed/38/ef/ed38efff831277061d2ba9e0c7e65ecd.jpg",
   "https://i.pinimg.com/736x/e5/36/f7/e536f7c6c02221308a13f659eba7b276.jpg",
   "https://i.pinimg.com/736x/45/b0/74/45b07477545108393c8cadb21879be8e.jpg",
-    "https://i.pinimg.com/1200x/5f/d7/83/5fd783e7cd0b2221a509f04a1f1a8fba.jpg",
-    "https://i.pinimg.com/736x/24/d8/f4/24d8f47644e55e00c5979c98ee99b187.jpg",
-    "https://i.pinimg.com/1200x/d5/e2/06/d5e2060a5854999d6a69ed7ad166fe3e.jpg",
-    "https://i.pinimg.com/736x/fa/b5/3f/fab53f8c08e7845f4d58a960a552fb44.jpg",
-    "https://i.pinimg.com/1200x/96/35/59/9635593f81a321ec56e66df34fcc731b.jpg",
-]
-
+  "https://i.pinimg.com/1200x/5f/d7/83/5fd783e7cd0b2221a509f04a1f1a8fba.jpg",
+  "https://i.pinimg.com/736x/24/d8/f4/24d8f47644e55e00c5979c98ee99b187.jpg",
+  "https://i.pinimg.com/1200x/d5/e2/06/d5e2060a5854999d6a69ed7ad166fe3e.jpg",
+  "https://i.pinimg.com/736x/fa/b5/3f/fab53f8c08e7845f4d58a960a552fb44.jpg",
+  "https://i.pinimg.com/1200x/96/35/59/9635593f81a321ec56e66df34fcc731b.jpg",
+];
 
 // 💌 คำอวยพร
 const wishes = [
@@ -29,35 +27,52 @@ const wishes = [
   "You make ordinary look lovely 🌈",
   "Keep smiling — it suits you ridiculously well 😋",
   "You're the sparkle in someone's sky ✨",
-]
+];
 
 export default function Celebrate() {
-  const [cake, setCake] = useState(null)
-  const [wish, setWish] = useState("")
-  const navigate = useNavigate()
+  const [cake, setCake] = useState(null);
+  const [wish, setWish] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const navigate = useNavigate();
+  const audioRef = useRef(null);
 
-  // 🍰 ฟังก์ชันสุ่มภาพ + คำอวยพร
   const handleRoll = () => {
-    const randomCake = cakes[Math.floor(Math.random() * cakes.length)]
-    const randomWish = wishes[Math.floor(Math.random() * wishes.length)]
-    setCake(randomCake)
-    setWish(randomWish)
-    confetti ({ particleCount: 80, spread: 70, origin: { y: 0.6 } })
-  }
+    const randomCake = cakes[Math.floor(Math.random() * cakes.length)];
+    const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+    setCake(randomCake);
+    setWish(randomWish);
+    confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+    if (!isPlaying) toggleMusic(); // เล่นเพลงอัตโนมัติครั้งแรก
+  };
+
+  const toggleMusic = () => {
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <motion.div
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-yellow-50 text-center px-6 overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-yellow-50 text-center px-6 overflow-hidden relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      {/* 🎠 Title */}
-      <h1 className="text-5xl font-bold text-gray-400 mb-8">
-        Rolling Birthday
-      </h1>
+      {/* 🎵 เพลงจาก YouTube (ฝังแบบซ่อน) */}
+      {isPlaying && (
+        <iframe
+          width="0"
+          height="0"
+          src="https://www.youtube.com/embed/ryxAZDmEUHo?autoplay=1&loop=1&playlist=ryxAZDmEUHo&controls=0"
+          title="Birthday Song"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
+      )}
 
-      {/* 🍰 รูปภาพเค้ก */}
+      {/* 🎠 Title */}
+      <h1 className="text-5xl font-bold text-gray-400 mb-8">Rolling Birthday</h1>
+
+      {/* 🍰 รูปเค้ก */}
       {cake ? (
         <motion.div
           key={cake}
@@ -77,7 +92,7 @@ export default function Celebrate() {
           />
         </motion.div>
       ) : (
-        <p className="text-gray-600 mb-4">Click the button to roll your cake 🎲</p>
+        <p className="text-gray-600 mb-4">Click to roll your birthday cake 🎲</p>
       )}
 
       {/* 💌 คำอวยพร */}
@@ -111,6 +126,15 @@ export default function Celebrate() {
       >
         ← Back
       </motion.button>
+
+      {/* 🔈 ปุ่มเปิด/ปิดเสียง */}
+      <motion.button
+        onClick={toggleMusic}
+        whileHover={{ scale: 1.2 }}
+        className="absolute bottom-5 right-5 text-3xl bg-white/60 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white"
+      >
+        {isPlaying ? "🔈" : "🔇"}
+      </motion.button>
     </motion.div>
-  )
+  );
 }
