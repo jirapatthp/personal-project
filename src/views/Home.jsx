@@ -110,7 +110,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="max-w-md text-gray-600 mt-6 text-lg"
+          className="max-w-md text-gray-600 mt-6 text-lg bg-[url('https://i.pinimg.com/736x/50/38/29/503829e45fbbb222f98ffc3f6c072c01.jpg')]"
         > 
         
           Tap to unwrap your surprise  <br />
@@ -119,7 +119,7 @@ export default function Home() {
 
          <button
           onClick={() => navigate("/celebrate")}
-          className="border-1 mt-10 px-8 py-4 bg-[url('https://i.pinimg.com/originals/0f/55/5c/0f555c0d865ea5d7f382e9dd245136c8.gif')]  rounded-full font-mono transition hover:cursor-pointer hover:scale-[1.1]"
+          className="border-1 mt-10 px-8 py-4 bg-[url('https://i.pinimg.com/originals/0f/55/5c/0f555c0d865ea5d7f382e9dd245136c8.gif')]  rounded-full  transition hover:cursor-pointer hover:scale-[1.1] font-bold"
         >
           click 
         </button>

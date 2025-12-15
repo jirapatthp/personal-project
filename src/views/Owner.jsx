@@ -5,7 +5,7 @@ import coldcereal from "../assets/colddcereal.png"
 
 export default function Owner() {
   return (
-    <div className="min-h-screen flex flex-col items-center  pt-12 gap-y-3 ">
+    <div className="min-h-screen flex flex-col items-center  pt-12 gap-y-3 bg-[url('https://i.pinimg.com/1200x/a8/ad/0a/a8ad0a9fd69b2e11324c16bd93bb6406.jpg')]">
 
       <h1 className="text-4xl font-bold text-center">coldd cereal</h1>
       <img
