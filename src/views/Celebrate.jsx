@@ -1,21 +1,34 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom"
+import confetti from "canvas-confetti"
+
 
 const cakes = [
-  "🎂 Strawberry Cake",
-  "🧁 Vanilla Cupcake",
-  "🍰 Chocolate Slice",
-  "🍮 Flan Delight",
-  "🍓 Berry Cheesecake",
+  "https://i.pinimg.com/736x/e0/e8/d7/e0e8d73620db92d8903416b52632435c.jpg",
+  "https://i.pinimg.com/736x/ed/38/ef/ed38efff831277061d2ba9e0c7e65ecd.jpg",
+  "https://i.pinimg.com/736x/e5/36/f7/e536f7c6c02221308a13f659eba7b276.jpg",
+  "https://i.pinimg.com/736x/45/b0/74/45b07477545108393c8cadb21879be8e.jpg",
+    "https://i.pinimg.com/1200x/5f/d7/83/5fd783e7cd0b2221a509f04a1f1a8fba.jpg",
+    "https://i.pinimg.com/736x/24/d8/f4/24d8f47644e55e00c5979c98ee99b187.jpg",
+    "https://i.pinimg.com/1200x/d5/e2/06/d5e2060a5854999d6a69ed7ad166fe3e.jpg",
+    "https://i.pinimg.com/736x/fa/b5/3f/fab53f8c08e7845f4d58a960a552fb44.jpg",
+    "https://i.pinimg.com/1200x/96/35/59/9635593f81a321ec56e66df34fcc731b.jpg",
 ]
 
+
+// 💌 คำอวยพร
 const wishes = [
-  "ขอให้ปีนี้เป็นปีที่หวานเหมือนเค้กก้อนนี้ 🍰",
-  "สุขสันต์วันเกิด! ขอให้ได้ทุกอย่างที่หวัง 🎈",
-  "ขอให้มีความสุขมาก ๆ และหัวเราะบ่อย ๆ 😄",
-  "วันนี้เป็นวันของคุณ — สนุกให้สุดเลย! 🎉",
-  "ขอให้ทุกวันของชีวิตเต็มไปด้วยรอยยิ้ม 🌈",
+  "Hope this year wraps you in warmth, wonder, and whipped cream ☁️",
+  "Happy birthday cutie! 🎂",
+  "Wishing you a year that feels like sunlight after rain 🌈",
+  "Here's to another year of beautiful chaos and happy crumbs 🍓",
+  "Hope your dreams bloom like frosting on a perfect cake 🌷",
+  "May today remind you how loved you already are 💖",
+  "Tiny cake. Huge joy. 🍰",
+  "You make ordinary look lovely 🌈",
+  "Keep smiling — it suits you ridiculously well 😋",
+  "You're the sparkle in someone's sky ✨",
 ]
 
 export default function Celebrate() {
@@ -23,65 +36,81 @@ export default function Celebrate() {
   const [wish, setWish] = useState("")
   const navigate = useNavigate()
 
+  // 🍰 ฟังก์ชันสุ่มภาพ + คำอวยพร
   const handleRoll = () => {
     const randomCake = cakes[Math.floor(Math.random() * cakes.length)]
     const randomWish = wishes[Math.floor(Math.random() * wishes.length)]
     setCake(randomCake)
     setWish(randomWish)
+    confetti ({ particleCount: 80, spread: 70, origin: { y: 0.6 } })
   }
 
   return (
     <motion.div
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-yellow-50 text-center px-6"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-yellow-50 text-center px-6 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <h1 className="text-5xl font-bold text-pink-600 mb-8">
-        🎠 Rolling Birthday 🎂
+      {/* 🎠 Title */}
+      <h1 className="text-5xl font-bold text-gray-400 mb-8">
+        Rolling Birthday
       </h1>
 
+      {/* 🍰 รูปภาพเค้ก */}
       {cake ? (
         <motion.div
           key={cake}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 100, damping: 12 }}
-          className="mb-6 text-3xl"
+          className="mb-6"
         >
-          {cake}
+          <motion.img
+            key={cake}
+            src={cake}
+            alt="birthday cake"
+            className="w-64 h-64 object-cover rounded-2xl shadow-lg mx-auto"
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, type: "spring" }}
+          />
         </motion.div>
       ) : (
-        <p className="text-gray-600 mb-4">
-          กดปุ่มด้านล่างเพื่อสุ่มเค้กและคำอวยพร 🎲
-        </p>
+        <p className="text-gray-600 mb-4">Click the button to roll your cake 🎲</p>
       )}
 
+      {/* 💌 คำอวยพร */}
       {wish && (
         <motion.p
           key={wish}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-lg text-gray-700 mb-6"
+          className="text-lg text-gray-700 mb-6 max-w-md"
         >
           {wish}
         </motion.p>
       )}
 
-      <button
+      {/* 🎲 ปุ่มสุ่ม */}
+      <motion.button
         onClick={handleRoll}
-        className="px-8 py-3 bg-pink-500 text-white rounded-full hover:bg-pink-600 shadow-md transition"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="px-8 py-3 text-gray-800 bg-[url('https://i.pinimg.com/736x/73/38/04/733804cae53588e6add14f92ffef4a33.jpg')] bg-cover rounded-full shadow-md transition hover:cursor-pointer hover:bg-[url('https://i.pinimg.com/736x/13/67/99/1367995e76e1d882e4c797a047e53b2c.jpg')]"
       >
-        🎲 Roll Again
-      </button>
+        Roll Again 🎠
+      </motion.button>
 
-      <button
+      {/* ⬅️ ปุ่มย้อนกลับ */}
+      <motion.button
         onClick={() => navigate("/")}
-        className="mt-6 text-gray-500 underline hover:text-gray-700 transition"
+        whileHover={{ scale: 1.05 }}
+        className="mt-6 text-gray-500 underline hover:text-gray-700 transition hover:cursor-pointer"
       >
-        ← กลับไปหน้าแรก
-      </button>
+        ← Back
+      </motion.button>
     </motion.div>
   )
 }

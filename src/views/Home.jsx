@@ -71,10 +71,14 @@ import { motion } from "framer-motion"
 import cakePink from "../assets/cake-pink.jpg"
 import cakeBlue from "../assets/cake-blue.jpg"
 import cakeWhite from "../assets/cake-white.jpg"
+import brownie from "../assets/brownie.jpg"
+import pinku from "../assets/pinku.jpg"
+import homie from "../assets/homie.jpg"
+
 import { useNavigate } from "react-router-dom"
 
 export default function Home() {
-  const cakes = [cakePink, cakeBlue, cakeWhite]
+  const cakes = [  cakeWhite, pinku,cakeBlue, cakePink, brownie, homie]
    const navigate = useNavigate()
 
   return (
@@ -127,7 +131,7 @@ export default function Home() {
             key={index}
             src={cake}
             alt="cake"
-            className="w-40 md:w-52 absolute"
+            className="w-40 md:w-40 absolute"
             initial={{ y: 50, opacity: 0 }}
             animate={{
               y: [20 * index, -20 * index, 20 * index],
@@ -140,8 +144,8 @@ export default function Home() {
               ease: "easeInOut",
             }}
             style={{
-              top: `${20 + index * 15}%`,
-              left: `${15 + index * 25}%`,
+              top: `${20 + index * 10}%`,
+              left: `${10 + index * 15}%`,
             }}
           />
         ))}

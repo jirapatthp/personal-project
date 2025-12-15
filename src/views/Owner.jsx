@@ -1,9 +1,10 @@
+import coldcereal from "../assets/colddcereal.png"
 export default function Owner() {
   return (
     <div className="min-h-screen flex flex-col items-center  pt-12 gap-y-3 ">
       <h1 className="text-4xl font-bold text-center">coldd cereal</h1>
       <img
-        src="https://i.pinimg.com/736x/a1/6a/0d/a16a0de0227fee0cc7942f2f512454d3.jpg"
+        src={coldcereal}
         alt="user image"
         className="w-64 rounded-2xl"
       />
