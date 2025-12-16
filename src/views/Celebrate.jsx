@@ -115,7 +115,7 @@ export default function Celebrate() {
         ) : (
           // 💫 Step 2 — หน้าฉลอง
           <>
-            <h2 className="text-3xl font-semibold text-gray-500 mb-6">
+            <h2 className="text-xl md:text-3xl font-semibold text-gray-500 mb-6">
              ˚ʚ♡ɞ˚ Happy Birthday <span className="text-gray-500">{name}</span> ˚ʚ♡ɞ˚
             </h2>
 
@@ -157,7 +157,7 @@ export default function Celebrate() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-lg text-gray-700 mb-6 max-w-md"
+                className=" md:text-lg text-gray-700 mb-6 max-w-md"
               >
                 {wish}
               </motion.p>

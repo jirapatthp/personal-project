@@ -68,12 +68,12 @@
 // }
 
 import { motion } from "framer-motion";
-import cakePink from "../assets/cake-pink.jpg";
-import cakeBlue from "../assets/cake-blue.jpg";
-import cakeWhite from "../assets/cake-white.jpg";
-import brownie from "../assets/brownie.jpg";
-import pinku from "../assets/pinku.jpg";
-import homie from "../assets/homie.jpg";
+import cakePink from "../assets/cake-pink.png";
+import cakeBlue from "../assets/cake-blue.png";
+import cakeWhite from "../assets/cake-white.png";
+import brownie from "../assets/brownie.png";
+import pinku from "../assets/pinku.png";
+import homie from "../assets/homie.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -89,7 +89,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-[8rem] leading-none font-extrabold text-gray-400 tracking-tight"
+          className="text-[4rem] md:text-[8rem] leading-none font-extrabold text-gray-400 tracking-tight"
         >
           rolling
           <br />
@@ -121,7 +121,7 @@ export default function Home() {
             key={index}
             src={cake}
             alt="cake"
-            className="w-40 md:w-40 absolute"
+            className="w-15 md:w-40 absolute"
             initial={{ y: 50, opacity: 0 }}
             animate={{
               y: [20 * index, -20 * index, 20 * index],

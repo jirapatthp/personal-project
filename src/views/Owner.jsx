@@ -15,13 +15,15 @@ export default function Owner() {
       {/* <h1 className="text-4xl font-bold text-center">coldd cereal</h1> */}
       <img src={coldcereal} alt="user image" className="w-64 rounded-2xl" />
       <p className="text-center">
-        <span className="font-bold">
+        <span className="font-bold text-lg">
           hi <br /> ꒒ ০ ⌵ ୧ ♡
         </span>
-        <br />I created Rolling Birthday as a small digital gift ┆ ° ♡ • ✩ ◛ °
-        <br /> a place where anyone can feel a bit of joy on their special day.{" "}
+        <div className="text-[1rem] md:text-lg">
+        <br />I created Rolling Birthday <br /> as a small digital gift ┆ ° ♡ • ✩ ◛ °
+        <br /> a place where anyone can feel <br /> a bit of joy on their special day.{" "}
         <br />
-        Just spin, smile, and celebrate. You deserve it.
+        Just spin, smile, and celebrate. <br /> You deserve it.
+        </div>
       </p>
     </div>
   );
